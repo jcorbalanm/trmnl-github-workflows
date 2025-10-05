@@ -1,0 +1,37 @@
+<!-- Defining each type of run -->
+{% assign completed_runs_count = 0 %}
+{% assign queued_runs_count = 0 %}
+{% assign in_progress_runs_count = 0 %}
+{% assign action_required_runs_count = 0 %}
+{% assign successful_runs_count = 0 %}
+{% assign skipped_runs_count = 0 %}
+{% assign cancelled_runs_count = 0 %}
+{% assign failed_runs_count = 0 %}
+
+<!-- Counting of each type of run -->
+{% for run in workflow_runs %}
+  {% if run.status == "completed" %}
+    {% assign completed_runs_count = completed_runs_count | plus: 1 %}
+  {% endif %}
+  {% if run.status == "queued" %}
+    {% assign queued_runs_count = queued_runs_count | plus: 1 %}
+  {% endif %}
+  {% if run.status == "in_progress" %}
+    {% assign in_progress_runs_count = in_progress_runs_count | plus: 1 %}
+  {% endif %}
+  {% if run.conclusion == "action_required" %}
+    {% assign action_required_runs_count = action_required_runs_count | plus: 1 %}
+  {% endif %}
+  {% if run.conclusion == "success" %}
+    {% assign successful_runs_count = successful_runs_count | plus: 1 %}
+  {% endif %}
+  {% if run.conclusion == "skipped" %}
+    {% assign skipped_runs_count = skipped_runs_count | plus: 1 %}
+  {% endif %}
+  {% if run.conclusion == "cancelled" %}
+    {% assign cancelled_runs_count = cancelled_runs_count | plus: 1 %}
+  {% endif %}
+  {% if run.conclusion == "failure" %}
+    {% assign failed_runs_count = failed_runs_count | plus: 1 %}
+  {% endif %}
+{% endfor %}

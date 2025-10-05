@@ -1,0 +1,189 @@
+<div class="layout layout--col gap layout--stretch">
+  <div class="grid grid--cols-4 portrait:grid--cols-2 lg:grid--cols-8 lg:portrait:grid--cols-4">
+    
+    <!-- Accentuate items depending of "worryness" -->   
+    {% if completed_runs_count <= 60 %}
+    <div class="item item--emphasis-3">
+    {% elsif completed_runs_count <= 85 %}
+    <div class="item item--emphasis-2">
+    {% else %}
+    <div class="item">
+    {% endif %}
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums"> {{ completed_runs_count }} </span>
+        <span class="label">Completed</span>
+      </div>
+    </div>
+    {% if queued_runs_count >= 30 %}
+    <div class="item item--emphasis-3">
+    {% elsif queued_runs_count >= 15 %}
+    <div class="item item--emphasis-2">
+    {% else %}
+    <div class="item">
+    {% endif %}
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums"> {{ queued_runs_count }} </span>
+        <span class="label">Queued</span>
+      </div>
+    </div>
+    {% if in_progress_runs_count >= 30 %}
+    <div class="item item--emphasis-3">
+    {% elsif in_progress_runs_count >= 15 %}
+    <div class="item item--emphasis-2">
+    {% else %}
+    <div class="item">
+    {% endif %}
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums"> {{ in_progress_runs_count }} </span>
+        <span class="label">In progress</span>
+      </div>
+    </div>
+    {% if action_required_runs_count >= 30 %}
+    <div class="item item--emphasis-3">
+    {% elsif action_required_runs_count >= 15 %}
+    <div class="item item--emphasis-2">
+    {% else %}
+    <div class="item">
+    {% endif %}
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums"> {{ action_required_runs_count }} </span>
+        <span class="label">Action required</span>
+      </div>
+    </div>
+    {% if successful_runs_count <= 60 %}
+    <div class="item item--emphasis-3">
+    {% elsif successful_runs_count <= 85 %}
+    <div class="item item--emphasis-2">
+    {% else %}
+    <div class="item">
+    {% endif %}
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums"> {{ successful_runs_count }} </span>
+        <span class="label">Successful</span>
+      </div>
+    </div>
+    {% if cancelled_runs_count >= 30 %}
+    <div class="item item--emphasis-3">
+    {% elsif cancelled_runs_count >= 15 %}
+    <div class="item item--emphasis-2">
+    {% else %}
+    <div class="item">
+    {% endif %}
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums"> {{ cancelled_runs_count }} </span>
+        <span class="label">Cancelled</span>
+      </div>
+    </div>
+    {% if skipped_runs_count >= 30 %}
+    <div class="item item--emphasis-3">
+    {% elsif skipped_runs_count >= 15 %}
+    <div class="item item--emphasis-2">
+    {% else %}
+    <div class="item">
+    {% endif %}
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums"> {{ skipped_runs_count }} </span>
+        <span class="label">Skipped</span>
+      </div>
+    </div>
+    {% if failed_runs_count >= 30 %}
+    <div class="item item--emphasis-3">
+    {% elsif failed_runs_count >= 15 %}
+    <div class="item item--emphasis-2">
+    {% else %}
+    <div class="item">
+    {% endif %}
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums">  {{ failed_runs_count }} </span>
+        <span class="label">Failed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- hidden depending on size seems to not be yet working -->
+  <div class="border--h-1 w--full sm:hidden md:hidden"></div>
+
+  <!-- hidden depending on size seems to not be yet working -->
+  <div class="layout layout-right w--full sm:hidden md:hidden">
+    <div class="flex flex--col w-full gap" data-overflow="true">
+      {% for run in workflow_runs %}
+      
+      <!-- Accentuate running and failed -->      
+      {% if run.status == failed %}
+      <div class="item w--full item--emphasis-3">
+      {% elsif run.conclusion == null %}
+      <div class="item w--full item--emphasis-2">
+      {% else %}
+      <div class="item w--full">
+      {% endif %}
+
+        <div class="meta"></div>
+        <div class="content ">
+
+          <!-- could be improved with Moment.js library -->
+          <span class="title title--small w--full" data-clamp="2">
+            {{ run.display_title }} |
+
+            {% assign dateStart = run.run_started_at | date: '%s' %}
+            {% assign dateEnd = "now" | date: '%s' %}
+            {% assign diffSeconds = dateEnd | minus: dateStart %}
+            
+            {% if diffSeconds < 300 %}
+              {{diffSeconds}} seconds
+            {% elsif diffSeconds < 3600 %}
+              {{diffSeconds | divided_by: 60}} minutes
+            {% elsif diffSeconds < 7200 %}
+              {{diffSeconds | divided_by: 3600}} hour
+            {% elsif diffSeconds < 86400 %}
+              {{diffSeconds | divided_by: 3600}} hours
+            {% elsif diffSeconds < 172800 %}
+              {{diffSeconds | divided_by: 3600}} day
+            {% else %}
+              {{diffSeconds | divided_by: 86400}} days
+            {% endif %}
+            ago
+          </span>
+          <div class="flex flex--row">
+            <span class="description" data-clamp="2">
+              {{run.name}}
+              #{{run.run_number}}, triggered by {{run.event}} in {{run.head_branch}} |
+              {% if run.conclusion == null %}
+              {{run.status}},
+              {% else %}
+              {{run.status}} ({{run.conclusion}}),
+              {% endif %}
+              <span>
+                <!-- could be improved with Moment.js library -->
+                duration:
+                {% assign dateStart = run.created_at | date: '%s' %}
+                {% assign dateEnd = run.updated_at | date: '%s' %}
+                {% assign diffSeconds = dateEnd | minus: dateStart %}
+                {% if diffSeconds <= 60 %}
+                  {{diffSeconds}}s
+                {% else %}
+                  {{diffSeconds | divided_by: 60}}m {{diffSeconds | modulo: 60}}s
+                {% endif %}
+              </span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="title_bar">
+  <img class="image" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/github-dark.svg">
+  <span class="title"> {{trmnl.plugin_settings.custom_fields_values.github_repository_owner}}/{{trmnl.plugin_settings.custom_fields_values.github_repository_name}} </span>
+  <span class="instance"> <span class="portrait:hidden"> {{ 'updated' | l_word: trmnl.user.locale }}: </span> {{ trmnl.system.timestamp_utc | plus: trmnl.user.utc_offset | date:"%Y-%m-%d %H:%M" }} </span>
+</div> 
