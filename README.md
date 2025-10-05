@@ -1,0 +1,1 @@
+Will write README tomorrow. Last 100 reason is GitHub API max page size. Afaik trmnl doesn't allow paging in polling, and didn't want to use an external service to act as intermediary to keep it simple. 
