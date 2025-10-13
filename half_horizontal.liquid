@@ -145,7 +145,7 @@
             {% elsif diffSeconds < 86400 %}
               {{diffSeconds | divided_by: 3600}} hours
             {% elsif diffSeconds < 172800 %}
-              {{diffSeconds | divided_by: 3600}} day
+              {{diffSeconds | divided_by: 86400}} day
             {% else %}
               {{diffSeconds | divided_by: 86400}} days
             {% endif %}
