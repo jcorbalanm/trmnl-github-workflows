@@ -12,19 +12,19 @@ custom_fields:
 - keyname: plugin_bio
   name: About This Plugin
   field_type: author_bio
-  description: This extension gets the last 100 GitHub Workflows from a custom repository, counts them and shows some stats + show as many as can fit descending. More info in the repository README.
+  description: This extension retrieves the last 100 GitHub workflows from a custom repository, counts them, and displays some statistics. It also shows as many workflows as can fit, in descending order. More information can be found in the repository’s README.
   github_url: https://github.com/jcorbalanm/trmnl-github-workflows
   learn_more_url: https://jcorbalan.com/en/blog/trmnl-github-workflows
   email_address: oss@jcorbalan.com
 - keyname: github_repository_owner
   field_type: string
-  name: Gihtub repository owner
+  name: GitHub repository owner
   placeholder: User or organization
   description: Enter here the user or organization of the repository
   optional: false
 - keyname: github_repository_name
   field_type: string
-  name: Gihtub repository name
+  name: GitHub repository name
   placeholder: Repository name
   description: Enter here the name of the repository
   optional: false
@@ -37,4 +37,4 @@ custom_fields:
     '
   optional: false
 name: Last 100 GitHub Workflows
-refresh_interval: 15
+refresh_interval: 1440

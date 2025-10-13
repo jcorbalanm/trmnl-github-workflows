@@ -11,8 +11,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--tnums"> {{ completed_runs_count }} </span>
-        <span class="label">Completed</span>
+        <span class="value value--small value--tnums"> {{ completed_runs_count }} </span>
+        <span class="label label--small">Completed</span>
       </div>
     </div>
     {% if queued_runs_count >= 30 %}
@@ -24,8 +24,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--tnums"> {{ queued_runs_count }} </span>
-        <span class="label">Queued</span>
+        <span class="value value--small value--tnums"> {{ queued_runs_count }} </span>
+        <span class="label label--small">Queued</span>
       </div>
     </div>
     {% if in_progress_runs_count >= 30 %}
@@ -37,8 +37,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--tnums"> {{ in_progress_runs_count }} </span>
-        <span class="label">In progress</span>
+        <span class="value value--small value--tnums"> {{ in_progress_runs_count }} </span>
+        <span class="label label--small">In progress</span>
       </div>
     </div>
     {% if action_required_runs_count >= 30 %}
@@ -50,8 +50,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--tnums"> {{ action_required_runs_count }} </span>
-        <span class="label">Action required</span>
+        <span class="value value--small value--tnums"> {{ action_required_runs_count }} </span>
+        <span class="label label--small">Action required</span>
       </div>
     </div>
     {% if successful_runs_count <= 60 %}
@@ -63,8 +63,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--tnums"> {{ successful_runs_count }} </span>
-        <span class="label">Successful</span>
+        <span class="value value--small value--tnums"> {{ successful_runs_count }} </span>
+        <span class="label label--small">Successful</span>
       </div>
     </div>
     {% if cancelled_runs_count >= 30 %}
@@ -76,8 +76,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--tnums"> {{ cancelled_runs_count }} </span>
-        <span class="label">Cancelled</span>
+        <span class="value value--small value--tnums"> {{ cancelled_runs_count }} </span>
+        <span class="label label--small">Cancelled</span>
       </div>
     </div>
     {% if skipped_runs_count >= 30 %}
@@ -89,8 +89,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--tnums"> {{ skipped_runs_count }} </span>
-        <span class="label">Skipped</span>
+        <span class="value value--small value--tnums"> {{ skipped_runs_count }} </span>
+        <span class="label label--small">Skipped</span>
       </div>
     </div>
     {% if failed_runs_count >= 30 %}
@@ -102,8 +102,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--tnums">  {{ failed_runs_count }} </span>
-        <span class="label">Failed</span>
+        <span class="value value--small value--tnums">  {{ failed_runs_count }} </span>
+        <span class="label label--small">Failed</span>
       </div>
     </div>
   </div>
@@ -184,6 +184,6 @@
 
 <div class="title_bar">
   <img class="image" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/github-dark.svg">
-  <span class="title portrait:hidden"> {{trmnl.plugin_settings.custom_fields_values.github_repository_owner}}/{{trmnl.plugin_settings.custom_fields_values.github_repository_name}} </span>
+  <span class="title portrait:hidden"> {{trmnl.plugin_settings.custom_fields_values.github_repository_name}} </span>
   <span class="instance"> {{ trmnl.system.timestamp_utc | plus: trmnl.user.utc_offset | date:"%Y-%m-%d %H:%M" }} </span>
 </div> 
