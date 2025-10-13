@@ -12,7 +12,7 @@
       <div class="meta"></div>
       <div class="content">
         <span class="value value--tnums"> {{ completed_runs_count }} </span>
-        <span class="label">Completed</span>
+        <span class="label label--small">Completed</span>
       </div>
     </div>
     {% if queued_runs_count >= 30 %}
@@ -25,7 +25,7 @@
       <div class="meta"></div>
       <div class="content">
         <span class="value value--tnums"> {{ queued_runs_count }} </span>
-        <span class="label">Queued</span>
+        <span class="label label--small">Queued</span>
       </div>
     </div>
     {% if in_progress_runs_count >= 30 %}
@@ -38,7 +38,7 @@
       <div class="meta"></div>
       <div class="content">
         <span class="value value--tnums"> {{ in_progress_runs_count }} </span>
-        <span class="label">In progress</span>
+        <span class="label label--small">Progress</span>
       </div>
     </div>
     {% if action_required_runs_count >= 30 %}
@@ -51,7 +51,7 @@
       <div class="meta"></div>
       <div class="content">
         <span class="value value--tnums"> {{ action_required_runs_count }} </span>
-        <span class="label">Action required</span>
+        <span class="label label--small">Pending</span>
       </div>
     </div>
     {% if successful_runs_count <= 60 %}
@@ -64,7 +64,7 @@
       <div class="meta"></div>
       <div class="content">
         <span class="value value--tnums"> {{ successful_runs_count }} </span>
-        <span class="label">Successful</span>
+        <span class="label label--small">Successful</span>
       </div>
     </div>
     {% if cancelled_runs_count >= 30 %}
@@ -77,7 +77,7 @@
       <div class="meta"></div>
       <div class="content">
         <span class="value value--tnums"> {{ cancelled_runs_count }} </span>
-        <span class="label">Cancelled</span>
+        <span class="label label--small">Cancelled</span>
       </div>
     </div>
     {% if skipped_runs_count >= 30 %}
@@ -90,7 +90,7 @@
       <div class="meta"></div>
       <div class="content">
         <span class="value value--tnums"> {{ skipped_runs_count }} </span>
-        <span class="label">Skipped</span>
+        <span class="label label--small">Skipped</span>
       </div>
     </div>
     {% if failed_runs_count >= 30 %}
@@ -103,7 +103,7 @@
       <div class="meta"></div>
       <div class="content">
         <span class="value value--tnums">  {{ failed_runs_count }} </span>
-        <span class="label">Failed</span>
+        <span class="label label--small">Failed</span>
       </div>
     </div>
   </div>

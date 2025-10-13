@@ -11,7 +11,7 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums"> {{ completed_runs_count }} </span>
+        <span class="value value--tnums"> {{ completed_runs_count }} </span>
         <span class="label label--small">Completed</span>
       </div>
     </div>
@@ -24,7 +24,7 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums"> {{ queued_runs_count }} </span>
+        <span class="value value--tnums"> {{ queued_runs_count }} </span>
         <span class="label label--small">Queued</span>
       </div>
     </div>
@@ -37,8 +37,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums"> {{ in_progress_runs_count }} </span>
-        <span class="label label--small">In progress</span>
+        <span class="value value--tnums"> {{ in_progress_runs_count }} </span>
+        <span class="label label--small">Progress</span>
       </div>
     </div>
     {% if action_required_runs_count >= 30 %}
@@ -50,8 +50,8 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums"> {{ action_required_runs_count }} </span>
-        <span class="label label--small">Action required</span>
+        <span class="value value--tnums"> {{ action_required_runs_count }} </span>
+        <span class="label label--small">Pending</span>
       </div>
     </div>
     {% if successful_runs_count <= 60 %}
@@ -63,7 +63,7 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums"> {{ successful_runs_count }} </span>
+        <span class="value value--tnums"> {{ successful_runs_count }} </span>
         <span class="label label--small">Successful</span>
       </div>
     </div>
@@ -76,7 +76,7 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums"> {{ cancelled_runs_count }} </span>
+        <span class="value value--tnums"> {{ cancelled_runs_count }} </span>
         <span class="label label--small">Cancelled</span>
       </div>
     </div>
@@ -89,7 +89,7 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums"> {{ skipped_runs_count }} </span>
+        <span class="value value--tnums"> {{ skipped_runs_count }} </span>
         <span class="label label--small">Skipped</span>
       </div>
     </div>
@@ -102,7 +102,7 @@
     {% endif %}
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums">  {{ failed_runs_count }} </span>
+        <span class="value value--tnums">  {{ failed_runs_count }} </span>
         <span class="label label--small">Failed</span>
       </div>
     </div>
